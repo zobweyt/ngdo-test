@@ -3,7 +3,9 @@ import { Task, TaskService } from "@/entities/task";
 import { inject, Injectable } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { NgdTaskDeleteDialogData } from "./dialog";
 import { NgdTaskDeleteDialog } from "./dialog/component";
+import { NgdTaskDeleteSnackBarData } from "./snack-bar";
 import { NgdTaskDeleteSnackBar } from "./snack-bar/component";
 
 @Injectable({ providedIn: "root" })
@@ -22,7 +24,10 @@ export class NgdTaskDeleteService {
   }
 
   private tryDeleteTask(tasks: Task[]) {
-    const dialog = this.dialog.open(NgdTaskDeleteDialog, {
+    const dialog = this.dialog.open<
+      NgdTaskDeleteDialog,
+      NgdTaskDeleteDialogData
+    >(NgdTaskDeleteDialog, {
       data: { tasks },
     });
 
@@ -42,7 +47,10 @@ export class NgdTaskDeleteService {
   }
 
   private openTaskDeleteSnackBar(tasks: Task[]) {
-    const snackBar = this.snackBar.openFromComponent(NgdTaskDeleteSnackBar, {
+    const snackBar = this.snackBar.openFromComponent<
+      NgdTaskDeleteSnackBar,
+      NgdTaskDeleteSnackBarData
+    >(NgdTaskDeleteSnackBar, {
       data: { tasks },
     });
 
