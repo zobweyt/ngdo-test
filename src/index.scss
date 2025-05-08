@@ -1,0 +1,167 @@
+@use "@angular/material" as mat;
+
+[data-theme="light"] {
+  @include mat.theme(
+    (
+      color: (
+        theme-type: light,
+        primary: mat.$azure-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ),
+  );
+
+  & {
+    color-scheme: only light;
+  }
+}
+
+[data-theme="dark"] {
+  @include mat.theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: mat.$azure-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ),
+  );
+
+  & {
+    color-scheme: only dark;
+  }
+}
+
+* {
+  scrollbar-color: var(--mat-sys-outline) transparent;
+}
+
+*::selection {
+  color: var(--mat-sys-on-primary);
+  background: var(--mat-sys-primary);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  touch-action: manipulation;
+}
+
+.mat-sidenav-container {
+  height: 100%;
+}
+
+.mat-mdc-nav-list .mat-mdc-list-item:not(:last-of-type) {
+  margin-bottom: 4px;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-form-field-icon-suffix {
+  margin-inline-end: 8px;
+}
+
+.mat-mdc-list-item:has(.mat-mdc-slide-toggle) .mdc-list-item__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: visible;
+}
+
+.mat-mdc-list-item:has(.mat-mdc-slider) .mat-mdc-list-item-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-mdc-list-item:has(.mat-mdc-slider) .mdc-list-item__content {
+  overflow: visible;
+}
+
+.mat-mdc-list-item:has(.mat-mdc-slider) {
+  padding-block: 16px !important;
+}
+
+.mat-mdc-list-item:has(.mat-mdc-slider) .mat-mdc-list-item-icon {
+  margin-top: 16px;
+}
+
+.mat-drawer {
+  border-radius: 0 !important;
+}
+
+.mat-drawer.mat-drawer-side[position="start"] {
+  border-inline-end: 1px solid var(--mat-sys-surface-container);
+}
+
+.mat-drawer.mat-drawer-side[position="end"] {
+  border-inline-start: 1px solid var(--mat-sys-surface-container);
+}
+
+.mat-drawer.mat-drawer-opened.mat-drawer-over {
+  width: 100%;
+}
+
+.mat-drawer-content,
+.mat-drawer-inner-container {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.mat-toolbar {
+  flex-shrink: 0;
+}
+
+.mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.mat-divider {
+  --mat-divider-color: var(--mat-sys-surface-container);
+}
+
+.mat-divider.mat-divider-horizontal {
+  margin: 32px 0;
+}
+
+.mat-drawer .mat-divider.mat-divider-horizontal {
+  margin-inline: -16px;
+}
+
+.mat-mdc-slider {
+  display: block !important;
+  margin: 0 !important;
+}
+
+.mat-toolbar.mat-toolbar-single-row.mat-primary .mdc-icon-button:first-child {
+  margin-inline-end: 8px;
+}
+
+.mdc-text-field--round .mdc-text-field--filled {
+  // border-radius: var(--mat-sys-corner-full);
+  border-radius: 28px;
+}
+
+.mdc-text-field--round .mdc-line-ripple {
+  display: none;
+}
+
+// .mat-sidenav.mat-drawer-side[position="end"] {
+//   width: 100% !important;
+//   max-width: 25vw !important;
+//   min-width: 360px !important;
+// }
+
+.mat-mdc-unelevated-button > .mat-icon {
+  --mat-filled-button-icon-offset: 0;
+}

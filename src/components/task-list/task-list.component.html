@@ -1,0 +1,26 @@
+<mat-nav-list aria-label="Select a task" style="margin-inline: 8px;">
+  @for (task of taskService.getTasks(type); track task.id) {
+    <mat-list-item
+      (click)="taskService.editTask(task.id)"
+      [activated]="isWebLandscape() && taskService.isSelectedTask(task)"
+      [@.disabled]="viewInitialized === false"
+      [@fadeHeight]
+    >
+      <mat-checkbox
+        #checkbox
+        aria-label="Toggle task completed state"
+        matListItemAvatar
+        (click)="$event.stopPropagation()"
+        (change)="taskService.updateTaskCompleted(task.id, $event.checked)"
+        [checked]="task.completed"
+      />
+      <span matListItemTitle>{{ task.title }}</span>
+      @if (task.description) {
+        <span matListItemLine>{{ task.description }}</span>
+      }
+      @if (task.date) {
+        <time matListItemMeta [attr.datetime]="task.date">{{ task.date | date:"EEEE hh:mm a" }}</time>
+      }
+    </mat-list-item>
+  }
+</mat-nav-list>

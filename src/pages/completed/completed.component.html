@@ -1,0 +1,27 @@
+@if (taskService.completedTasks().length) {
+  <button
+    type="button"
+    mat-button
+    mat-stroked-button
+    style="margin: 8px"
+    (click)="taskService.deleteCompleted()"
+  >
+    Delete all completed tasks
+  </button>
+
+  <ngd-task-list type="completed" />
+} @else {
+  <ngd-placeholder>
+    <mat-icon ngdPlaceholderIcon>check_box_outline_blank</mat-icon>
+    <p ngdPlaceholderTitle>
+      No completed tasks yet
+    </p>
+    <p ngdPlaceholderDescription>
+      There are no completed tasks
+    </p>
+    <a routerLink="" mat-button mat-flat-button ngdPlaceholderAction>
+      <mat-icon>add</mat-icon>
+      Create new task
+    </a>
+  </ngd-placeholder>
+}

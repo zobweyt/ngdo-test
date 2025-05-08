@@ -1,0 +1,17 @@
+@if (taskService.todayTasks().length) {
+  <ngd-task-list type="today" />
+} @else {
+  <ngd-placeholder>
+    <mat-icon ngdPlaceholderIcon>wb_sunny</mat-icon>
+    <p ngdPlaceholderTitle>
+      All tasks completed
+    </p>
+    <p ngdPlaceholderDescription>
+      There are no more active tasks for today
+    </p>
+    <a routerLink="" mat-button mat-flat-button ngdPlaceholderAction>
+      <mat-icon>add</mat-icon>
+      Create new task
+    </a>
+  </ngd-placeholder>
+}

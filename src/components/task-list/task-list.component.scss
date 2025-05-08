@@ -1,0 +1,14 @@
+.mat-mdc-list-item {
+  --mat-list-active-indicator-shape: var(--mat-sys-corner-large);
+}
+
+.mat-mdc-checkbox.mat-mdc-list-item-avatar {
+  background: transparent;
+  margin-inline: 8px;
+}
+
+@media (min-width: 959px) {
+  .mat-mdc-nav-list {
+    padding-inline: 8px;
+  }
+}

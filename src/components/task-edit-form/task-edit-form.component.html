@@ -1,0 +1,95 @@
+<form [formGroup]="form">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <textarea
+        matInput
+        name="title"
+        placeholder="Write a title…"
+        [required]="true"
+        [minlength]="2"
+        [maxLength]="64"
+        cdkFocusInitial
+        cdkTextareaAutosize
+        [formControl]="titleFormControl"
+      ></textarea>
+      <mat-hint align="end">
+        {{ titleFormControl.value?.length || 0 }} / 64
+      </mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        name="description"
+        placeholder="Write a description…"
+        [maxLength]="128"
+        [cdkAutosizeMinRows]="4"
+        [cdkAutosizeMaxRows]="16"
+        [cdkTextareaAutosize]="true"
+        [formControl]="descriptionFormControl"
+      ></textarea>
+      <mat-hint align="end">
+        {{ descriptionFormControl.value?.length || 0 }} / 256
+      </mat-hint>
+    </mat-form-field>
+  </p>
+  <mat-divider />
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input
+        name="date"
+        matInput
+        [matDatepicker]="datepicker"
+        placeholder="Select a date…"
+        [formControl]="dateFormControl"
+      >
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="datepicker"
+      />
+      <mat-datepicker #datepicker></mat-datepicker>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Time</mat-label>
+      <input
+        name="time"
+        matInput
+        [matTimepicker]="timepicker"
+        placeholder="Select a time…"
+        [formControl]="dateFormControl"
+      >
+      <mat-timepicker-toggle
+        matIconSuffix
+        [for]="timepicker"
+      />
+      <mat-timepicker #timepicker></mat-timepicker>
+    </mat-form-field>
+  </p>
+  <mat-divider />
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>List</mat-label>
+      <input
+        placeholder="Select a list…"
+        matInput
+        [matAutocomplete]="listAutocomplete"
+      >
+      <mat-icon matSuffix>folder</mat-icon>
+      <!-- https://material.angular.dev/components/autocomplete/overview#setting-separate-control-and-display-values -->
+      <mat-autocomplete
+        autoActiveFirstOption
+        #listAutocomplete="matAutocomplete"
+      >
+        <mat-option value="List 1">List 1</mat-option>
+        <mat-option value="List 2">List 2</mat-option>
+        <mat-option value="List 3">List 3</mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </p>
+</form>

@@ -1,0 +1,19 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-mdc-form-field {
+  margin-bottom: -24px;
+}
+
+form {
+  padding: 8px;
+}
+
+@media (min-width: 959px) {
+  form {
+    padding-inline: 16px;
+  }
+}

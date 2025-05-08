@@ -1,0 +1,18 @@
+<div matSnackBarLabel>
+  Task "{{ data.task.title }}" has been deleted!
+</div>
+
+<div matSnackBarActions>
+  <button
+    mat-button
+    matSnackBarAction
+    (click)="snackBarRef.dismissWithAction()"
+  >
+    <mat-icon aria-label="Undo icon">
+      undo
+    </mat-icon>
+    <span>
+      Undo
+    </span>
+  </button>
+</div>

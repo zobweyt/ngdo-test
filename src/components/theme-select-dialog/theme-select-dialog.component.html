@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Select a theme</h2>
+
+<mat-dialog-content>
+  <mat-selection-list
+    class="ngd-theme-selection-list"
+    [multiple]="false"
+    (selectionChange)="settings.theme = $event.options[0].value; dialog.close()"
+  >
+    @for (theme of themes; track theme) {
+      <mat-list-option
+        class="test"
+        [value]="theme"
+        [selected]="theme === settings.theme"
+        [attr.cdkFocusInitial]="theme === settings.theme ? true : undefined"
+      >
+        <span matListItemTitle>{{ service.getThemeDisplayName(theme) }}</span>
+      </mat-list-option>
+    }
+  </mat-selection-list>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]>Cancel</button>
+</mat-dialog-actions>
+
