@@ -5,12 +5,12 @@ import { NgdTaskDeleteService } from "./service";
 @Directive({ selector: "[ngd-task-delete]" })
 export class NgdTaskDelete {
   @Input({ required: true })
-  public task!: Task;
+  public tasks!: Task[];
 
   private readonly service = inject(NgdTaskDeleteService);
 
   @HostListener("click")
   private onClick(): void {
-    this.service.deleteTask(this.task);
+    this.service.deleteTask(this.tasks);
   }
 }

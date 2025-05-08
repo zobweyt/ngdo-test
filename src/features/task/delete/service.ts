@@ -13,41 +13,41 @@ export class NgdTaskDeleteService {
   private readonly settings = inject(SettingsService);
   private readonly snackBar = inject(MatSnackBar);
 
-  public deleteTask(task: Task) {
-    if (this.settings.confirmTaskDeletion) {
-      this.tryDeleteTask(task);
+  public deleteTask(tasks: Task[]) {
+    if (this.settings.confirmTaskDeletion && tasks.length !== 1) {
+      this.tryDeleteTask(tasks);
     } else {
-      this.forceDeleteTask(task);
+      this.forceDeleteTask(tasks);
     }
   }
 
-  private tryDeleteTask(task: Task) {
+  private tryDeleteTask(tasks: Task[]) {
     const dialog = this.dialog.open(NgdTaskDeleteDialog, {
-      data: { task: task },
+      data: { tasks },
     });
 
     dialog.afterClosed().subscribe((confirmed) => {
       if (confirmed) {
-        this.forceDeleteTask(task);
+        this.forceDeleteTask(tasks);
       }
     });
   }
 
-  private forceDeleteTask(task: Task) {
-    this.service.deleteTaskById(task.id);
+  private forceDeleteTask(tasks: Task[]) {
+    this.service.deleteTasksByIds(tasks.map(({ id }) => id));
 
-    if (this.settings.showTaskDeletionSnackbar) {
-      this.openTaskDeleteSnackBar(task);
+    if (this.settings.showTaskDeletionSnackbar && tasks.length !== 1) {
+      this.openTaskDeleteSnackBar(tasks);
     }
   }
 
-  private openTaskDeleteSnackBar(task: Task) {
+  private openTaskDeleteSnackBar(tasks: Task[]) {
     const snackBar = this.snackBar.openFromComponent(NgdTaskDeleteSnackBar, {
-      data: { task },
+      data: { tasks },
     });
 
     snackBar.onAction().subscribe(() => {
-      this.service.addTask(task);
+      tasks.forEach((task) => this.service.addTask(task));
     });
   }
 }

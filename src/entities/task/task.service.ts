@@ -107,6 +107,10 @@ export class TaskService {
     this.tasks.update((tasks) => tasks.filter((task) => task.id !== id));
   }
 
+  public deleteTasksByIds(ids: string[]): void {
+    this.tasks.update((tasks) => tasks.filter(({ id }) => !ids.includes(id)));
+  }
+
   updateTask(updatedTask: Task) {
     const currentTasks = this.tasks();
     const taskIndex = currentTasks.findIndex((task) =>

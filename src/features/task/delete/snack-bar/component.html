@@ -1,5 +1,9 @@
 <div matSnackBarLabel>
-  Task "{{ data.task.title }}" has been deleted!
+  @if (data.tasks.length === 1) {
+    Task "{{ data.tasks[0].title }}" has been deleted!
+  } @else {
+    {{ data.tasks.length }} tasks have been deleted!
+  }
 </div>
 
 <div matSnackBarActions>
@@ -8,9 +12,6 @@
     matSnackBarAction
     (click)="snackBarRef.dismissWithAction()"
   >
-    <mat-icon aria-label="Undo icon">
-      undo
-    </mat-icon>
     <span>
       Undo
     </span>
