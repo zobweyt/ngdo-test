@@ -3,13 +3,13 @@
 
   <mat-dialog-content>
     <p>
-      @if (this.data.tasks.length === 1) {
-        Do you really want to delete the task "{{ this.data.tasks[0].title }}"?
+      @if (data.tasks.length === 1) {
+        Do you really want to delete the task "{{ data.tasks[0].title }}"?
       } @else {
-        Do you really want to delete {{ this.data.tasks.length }} tasks?
+        Do you really want to delete {{ data.tasks.length }} tasks?
       }
     </p>
-    @if (this.data.tasks.length === 1) {
+    @if (data.tasks.length === 1) {
       <mat-checkbox
         [checked]="!settings.confirmTaskDeletion"
         (change)="settings.confirmTaskDeletion = !$event.checked"
