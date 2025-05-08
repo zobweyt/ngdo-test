@@ -1,8 +1,8 @@
 <mat-nav-list aria-label="Select a task" style="margin-inline: 8px;">
-  @for (task of taskService.getTasks(type); track task.id) {
+  @for (task of tasks; track task.id) {
     <mat-list-item
-      (click)="taskService.editTask(task.id)"
-      [activated]="isWebLandscape() && taskService.isSelectedTask(task)"
+      (click)="taskSelectService.selectTask(task.id)"
+      [activated]="isWebLandscape() && taskSelectService.isSelectedTask(task)"
       [@.disabled]="viewInitialized === false"
       [@fadeHeight]
     >
@@ -11,7 +11,7 @@
         aria-label="Toggle task completed state"
         matListItemAvatar
         (click)="$event.stopPropagation()"
-        (change)="taskService.updateTaskCompleted(task.id, $event.checked)"
+        (change)="taskToggleService.updateTaskCompleted(task.id, $event.checked)"
         [checked]="task.completed"
       />
       <span matListItemTitle>{{ task.title }}</span>

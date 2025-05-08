@@ -1,5 +1,5 @@
 @if (taskService.todayTasks().length) {
-  <ngd-task-list type="today" />
+  <ngd-task-list [tasks]="taskService.todayTasks()" />
 } @else {
   <ngd-placeholder>
     <mat-icon ngdPlaceholderIcon>wb_sunny</mat-icon>

@@ -15,15 +15,15 @@ export class NgdTaskDeleteService {
   private readonly settings = inject(SettingsService);
   private readonly snackBar = inject(MatSnackBar);
 
-  public deleteTask(tasks: Task[]) {
+  public deleteTasks(tasks: Task[]) {
     if (this.settings.confirmTaskDeletion || tasks.length !== 1) {
-      this.tryDeleteTask(tasks);
+      this.tryDeleteTasks(tasks);
     } else {
-      this.forceDeleteTask(tasks);
+      this.forceDeleteTasks(tasks);
     }
   }
 
-  private tryDeleteTask(tasks: Task[]) {
+  private tryDeleteTasks(tasks: Task[]) {
     const dialog = this.dialog.open<
       NgdTaskDeleteDialog,
       NgdTaskDeleteDialogData
@@ -33,13 +33,13 @@ export class NgdTaskDeleteService {
 
     dialog.afterClosed().subscribe((confirmed) => {
       if (confirmed) {
-        this.forceDeleteTask(tasks);
+        this.forceDeleteTasks(tasks);
       }
     });
   }
 
-  private forceDeleteTask(tasks: Task[]) {
-    this.service.deleteTasksByIds(tasks.map(({ id }) => id));
+  private forceDeleteTasks(tasks: Task[]) {
+    this.service.deleteTasks(tasks);
 
     if (this.settings.showTaskDeletionSnackbar || tasks.length !== 1) {
       this.openTaskDeleteSnackBar(tasks);

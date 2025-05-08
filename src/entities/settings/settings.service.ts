@@ -28,13 +28,13 @@ export class SettingsService {
   }
 
   protected load(): Settings {
-    try {
-      const settings = localStorage.getItem(LOCAL_STORAGE_SETTINGS_KEY);
-      if (settings) {
+    const settings = localStorage.getItem(LOCAL_STORAGE_SETTINGS_KEY);
+    if (settings) {
+      try {
         return { ...DEFAULT_SETTINGS, ...(JSON.parse(settings) as Settings) };
+      } catch (error) {
+        console.error("Failed to load settings from local storage", error);
       }
-    } catch (error) {
-      console.error("Failed to load settings from local storage", error);
     }
     return DEFAULT_SETTINGS;
   }

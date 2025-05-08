@@ -1,5 +1,7 @@
+import { Task, TaskService } from "@/entities/task";
+import { NgdTaskSelectService } from "@/features/task/select";
+import { NgdTaskToggleService } from "@/features/task/toggle";
 import { fadeHeight } from "@/shared/lib/animations";
-import { TaskListType, TaskService } from "@/entities/task";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { DatePipe } from "@angular/common";
 import { AfterViewInit, Component, inject, Input } from "@angular/core";
@@ -20,10 +22,12 @@ import { map } from "rxjs";
   animations: [fadeHeight],
 })
 export class TaskListComponent implements AfterViewInit {
-  @Input("type")
-  public type: TaskListType = "all";
+  @Input({ required: true })
+  public tasks!: Task[]
 
   taskService = inject(TaskService);
+  taskSelectService = inject(NgdTaskSelectService);
+  taskToggleService = inject(NgdTaskToggleService);
   breakpointObserver = inject(BreakpointObserver);
   viewInitialized: boolean = false;
 

@@ -1,5 +1,5 @@
 
-<form (submit)="taskService.addTask(newTask); newTask = ''">
+<form (submit)="taskService.createTask(newTask); newTask = ''">
   <mat-form-field class="mdc-text-field--round">
     <mat-icon matPrefix style="padding-inline-start: 16px;">check_box_outline_blank</mat-icon>
     <input #input matInput name="title" placeholder="Create new task" [(ngModel)]="newTask" />  
@@ -12,7 +12,7 @@
 </form>
 
 @if (taskService.activeTasks().length) {
-  <ngd-task-list type="active" />
+  <ngd-task-list [tasks]="taskService.activeTasks()" />
 } @else {
   <ngd-placeholder>
     <mat-icon ngdPlaceholderIcon>done_all</mat-icon>

@@ -42,9 +42,9 @@
             </mat-icon>
           }
           <span matListItemTitle>{{ item.title }}</span>
-          @if (taskService.getTasksLengthByRouteName(item.path)) {
+          @if (getTasksLengthByRouteName(item.path)) {
             <span matListItemMeta style="font: var(--mat-sys-body-large)" @fade>
-              {{ taskService.getTasksLengthByRouteName(item.path) }}
+              {{ getTasksLengthByRouteName(item.path) }}
             </span>
           }
         </a>
@@ -103,12 +103,12 @@
     fixedInViewport
     [attr.role]='isWebLandscape() ? "navigation" : "dialog"'
     [mode]='isWebLandscape() ? "side" : "over"'
-    [opened]="isWebLandscape() || taskService.selectedTask() !== null"
+    [opened]="isWebLandscape() || taskSelectService.selectedTask() !== null"
     [disableClose]="isWebLandscape()"
-    (closed)="taskService.resetSelectedTask()"
+    (closed)="taskSelectService.resetSelectedTask()"
   >
     <mat-toolbar style="justify-content: space-between">
-      @if (taskService.selectedTask() !== null) {
+      @if (taskSelectService.selectedTask() !== null) {
         <span>
           @if (isWebLandscape() && secondarySidenav.mode === "side") {
             <button
@@ -140,7 +140,7 @@
             <button
               mat-menu-item
               ngd-task-delete
-              [tasks]="[taskService.selectedTask()!]"
+              [tasks]="[taskSelectService.selectedTask()!]"
             >
               <mat-icon aria-label="Delete icon">
                 delete
@@ -166,7 +166,7 @@
           </button>
           <span>Edit</span>
         </span>
-      } @else if (taskService.selectedTask()) {
+      } @else if (taskSelectService.selectedTask()) {
         @if (secondarySidenav.mode === "over") {
           <span style="order: -1; display: flex; align-items: center; gap: 8px">
             <button
@@ -192,7 +192,7 @@
               mat-icon-button
               matTooltip="Close selected task"
               matTooltipShowDelay="300"
-              (click)="taskService.resetSelectedTask()"
+              (click)="taskSelectService.resetSelectedTask()"
             >
               <mat-icon aria-label="Close icon">close</mat-icon>
             </button>
@@ -200,8 +200,8 @@
         }
       }
     </mat-toolbar>
-    @if (taskService.selectedTask()) {
-      <ngd-task-edit-form [task]="taskService.selectedTask()!" />
+    @if (taskSelectService.selectedTask()) {
+      <ngd-task-edit-form [task]="taskSelectService.selectedTask()!" />
     } @else {
       <ngd-placeholder>
         <mat-icon ngdPlaceholderIcon>crop_free</mat-icon>

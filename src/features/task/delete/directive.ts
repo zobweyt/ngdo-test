@@ -11,6 +11,6 @@ export class NgdTaskDelete {
 
   @HostListener("click")
   private onClick(): void {
-    this.service.deleteTask(this.tasks);
+    this.service.deleteTasks(this.tasks);
   }
 }

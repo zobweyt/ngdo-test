@@ -1,10 +1,10 @@
-import { NgdPlaceholderModule } from "@/shared/ui/placeholder";
-import { TaskEditFormComponent } from "@/features/task/update/task-edit-form/task-edit-form.component";
-import { ListCreateService } from "@/features/list/create";
-import { NgdTaskDelete } from "@/features/task/delete";
-import { fade, fadeHeight } from "@/shared/lib/animations";
 import { ListService } from "@/entities/list";
 import { TaskService } from "@/entities/task/task.service";
+import { ListCreateService } from "@/features/list/create";
+import { NgdTaskDelete } from "@/features/task/delete";
+import { TaskEditFormComponent } from "@/features/task/update/task-edit-form/task-edit-form.component";
+import { fade, fadeHeight } from "@/shared/lib/animations";
+import { NgdPlaceholderModule } from "@/shared/ui/placeholder";
 import {
   CdkDrag,
   CdkDragDrop,
@@ -41,6 +41,7 @@ import {
 } from "@angular/router";
 import { filter, map, startWith, switchMap } from "rxjs";
 import { routes } from "./app.routes";
+import { NgdTaskSelectService } from "@/features/task/select";
 
 @Component({
   selector: "ngd-root",
@@ -79,6 +80,7 @@ export class NgdRoot implements AfterViewInit {
   readonly taskService = inject(TaskService);
   readonly listService = inject(ListService);
   readonly listCreateService = inject(ListCreateService);
+  readonly taskSelectService = inject(NgdTaskSelectService);
 
   readonly title = toSignal(
     this.router.events.pipe(
@@ -130,7 +132,7 @@ export class NgdRoot implements AfterViewInit {
     });
 
     effect(() => {
-      if (this.taskService.selectedTask() === null && this.isWebLandscape()) {
+      if (this.taskSelectService.selectedTask() === null && this.isWebLandscape()) {
         this.closeSecondaryFullView();
       }
     });
@@ -160,5 +162,18 @@ export class NgdRoot implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.viewInitialized = true;
+  }
+
+  getTasksLengthByRouteName(path: string | undefined): number | undefined {
+    switch (path) {
+      case "":
+        return this.taskService.activeTasks().length || undefined;
+      case "today":
+        return this.taskService.todayTasks().length || undefined;
+      case "completed":
+        return this.taskService.completedTasks().length || undefined;
+      default:
+        return undefined;
+    }
   }
 }

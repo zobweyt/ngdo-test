@@ -10,7 +10,7 @@
     Delete all completed tasks
   </button>
 
-  <ngd-task-list type="completed" />
+  <ngd-task-list [tasks]="taskService.completedTasks()" />
 } @else {
   <ngd-placeholder>
     <mat-icon ngdPlaceholderIcon>check_box_outline_blank</mat-icon>
