@@ -1,0 +1,47 @@
+<form (submit)="dialog.close(name.value)" [formGroup]="form">
+  <h2 mat-dialog-title>Create new list</h2>
+  <mat-dialog-content>
+    <p>Enter the name of the list:</p>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        required
+        minlength="2"
+        maxlength="32"
+        autocomplete="off"
+        formControlName="name"
+      />
+      <mat-hint align="end">
+        {{ name.value?.length }} / 32
+      </mat-hint>
+      @if (name.hasError("required")) {
+        <mat-error>
+          List name is required.
+        </mat-error>
+      }
+      @if (name.hasError("minlength")) {
+        <mat-error>
+          List name is too short.
+        </mat-error>
+      }
+      @if (name.hasError("maxlength")) {
+        <mat-error>
+          List name is too long.
+        </mat-error>
+      }
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]>
+      Cancel
+    </button>
+    <button
+      mat-flat-button
+      [mat-dialog-close]="name.value"
+      [disabled]="form.invalid"
+    >
+      OK
+    </button>
+  </mat-dialog-actions>
+</form>

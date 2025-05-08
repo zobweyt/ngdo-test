@@ -58,20 +58,22 @@
         cdkDropListOrientation="vertical"
         (cdkDropListDropped)="dropList($event)"
       >
-        @for (list of listService.lists; track list) {
+        @for (list of listService.lists(); track list) {
           <a
             mat-list-item
             routerLink="/"
             cdkDrag
             cdkDragBoundary="#lists"
             [cdkDragStartDelay]="50"
+            @fadeHeight
+            [@.disabled]="!viewInitialized"
           >
             <mat-icon matListItemIcon>folder</mat-icon>
             <span matListItemTitle>{{ list }}</span>
           </a>
         }
       </div>
-      <a mat-list-item (click)="listService.openCreateNewListDialog()">
+      <a mat-list-item (click)="listCreateService.openCreateListDialog()">
         <mat-icon matListItemIcon>add</mat-icon>
         <span>Create new list</span>
       </a>

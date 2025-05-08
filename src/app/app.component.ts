@@ -1,3 +1,10 @@
+import { NgdPlaceholderModule } from "@/components/placeholder";
+import { TaskEditFormComponent } from "@/components/task-edit-form/task-edit-form.component";
+import { ListCreateService } from "@/features/list/create";
+import { NgdTaskDelete } from "@/features/task/delete";
+import { fade, fadeHeight } from "@/lib/animations";
+import { ListService } from "@/services/list";
+import { TaskService } from "@/services/task/task.service";
 import {
   CdkDrag,
   CdkDragDrop,
@@ -5,7 +12,14 @@ import {
   moveItemInArray,
 } from "@angular/cdk/drag-drop";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { Component, effect, inject, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  ViewChild,
+} from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDividerModule } from "@angular/material/divider";
@@ -26,12 +40,6 @@ import {
   RouterOutlet,
 } from "@angular/router";
 import { filter, map, startWith, switchMap } from "rxjs";
-import { NgdPlaceholderModule } from "@/components/placeholder";
-import { TaskEditFormComponent } from "@/components/task-edit-form/task-edit-form.component";
-import { NgdTaskDelete } from "@/features/task/delete";
-import { fade } from "@/lib/animations";
-import { ListService } from "@/services/list";
-import { TaskService } from "@/services/task/task.service";
 import { routes } from "./app.routes";
 
 @Component({
@@ -58,9 +66,10 @@ import { routes } from "./app.routes";
   ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
-  animations: [fade],
+  animations: [fade, fadeHeight],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   readonly name = "ngdo";
   readonly navItems = routes.filter((route) => route.pathMatch === "full");
 
@@ -69,6 +78,7 @@ export class AppComponent {
   private breakpointObserver = inject(BreakpointObserver);
   readonly taskService = inject(TaskService);
   readonly listService = inject(ListService);
+  readonly listCreateService = inject(ListCreateService);
 
   readonly title = toSignal(
     this.router.events.pipe(
@@ -110,6 +120,8 @@ export class AppComponent {
     return leaf;
   }
 
+  viewInitialized: boolean = false;
+
   constructor() {
     this.router.events.subscribe(() => {
       if (this.isHandset()) {
@@ -126,7 +138,7 @@ export class AppComponent {
 
   dropList(event: CdkDragDrop<string[]>) {
     moveItemInArray(
-      this.listService.lists,
+      this.listService.lists(),
       event.previousIndex,
       event.currentIndex,
     );
@@ -144,5 +156,9 @@ export class AppComponent {
       this.primarySidenav.open();
       this.secondarySidenav.mode = "side";
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.viewInitialized = true;
   }
 }
