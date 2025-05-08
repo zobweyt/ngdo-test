@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 
-export const ngdoRoutes: Routes = [
+export const routes: Routes = [
   {
     title: "All",
     path: "",
@@ -29,8 +29,4 @@ export const ngdoRoutes: Routes = [
     loadComponent: () => import("@/pages/settings"),
     data: { icon: "settings" },
   },
-];
-
-export const routes: Routes = [
-  ...ngdoRoutes,
 ];

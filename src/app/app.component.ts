@@ -32,7 +32,7 @@ import { NgdTaskDelete } from "@/features/task/delete";
 import { fade } from "@/lib/animations";
 import { ListService } from "@/services/list";
 import { TaskService } from "@/services/task/task.service";
-import { ngdoRoutes } from "./app.routes";
+import { routes } from "./app.routes";
 
 @Component({
   selector: "ngd-root",
@@ -62,7 +62,7 @@ import { ngdoRoutes } from "./app.routes";
 })
 export class AppComponent {
   readonly name = "ngdo";
-  readonly navItems = ngdoRoutes;
+  readonly navItems = routes.filter((route) => route.pathMatch === "full");
 
   private route = inject(ActivatedRoute);
   private router = inject(Router);
