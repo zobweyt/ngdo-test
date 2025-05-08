@@ -1,5 +1,5 @@
+import { Theme } from "@/services/theme";
 import { computed, effect, Injectable, signal } from "@angular/core";
-import { Theme } from "../theme";
 
 @Injectable({ providedIn: "root" })
 export class ColorSchemeService {

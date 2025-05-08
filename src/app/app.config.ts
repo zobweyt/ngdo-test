@@ -3,15 +3,14 @@ import {
   inject,
   provideAppInitializer,
   provideExperimentalZonelessChangeDetection,
-  // provideZoneChangeDetection,
 } from "@angular/core";
 import { provideRouter } from "@angular/router";
 
-import { routes } from "./app.routes";
+import { ThemeService } from "@/services/theme";
 import { provideNativeDateAdapter } from "@angular/material/core";
-import { provideAnimations } from "@angular/platform-browser/animations";
-import { ThemeService } from "../services/theme/theme.service";
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from "@angular/material/snack-bar";
+import { provideAnimations } from "@angular/platform-browser/animations";
+import { routes } from "./app.routes";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +25,5 @@ export const appConfig: ApplicationConfig = {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: { duration: 3000 },
     },
-    // provideZoneChangeDetection({ eventCoalescing: true }),
   ],
 };

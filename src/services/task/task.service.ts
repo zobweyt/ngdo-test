@@ -1,9 +1,8 @@
+import { SettingsService } from "@/services/settings";
 import { computed, effect, inject, Injectable, signal } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { v4 as uuidv4 } from "uuid";
-import { NgdTaskDeleteDialog } from "../../features/task/delete/dialog/component";
-import { SettingsService } from "../settings/settings.service";
 import { Task, TaskListType } from "./task.model";
 
 @Injectable({

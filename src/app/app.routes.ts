@@ -1,36 +1,32 @@
 import { Routes } from "@angular/router";
-import { CompletedComponent } from "../pages/completed/completed.component";
-import { HomeComponent } from "../pages/home/home.component";
-import { SettingsComponent } from "../pages/settings/settings.component";
-import { TodayComponent } from "../pages/today/today.component";
 
 export const ngdoRoutes: Routes = [
   {
-    path: "",
-    component: HomeComponent,
-    pathMatch: "full",
     title: "All",
+    path: "",
+    pathMatch: "full",
+    loadComponent: () => import("@/pages/home"),
     data: { icon: "home" },
   },
   {
-    path: "today",
-    component: TodayComponent,
-    pathMatch: "full",
     title: "Today",
+    path: "today",
+    pathMatch: "full",
+    loadComponent: () => import("@/pages/today"),
     data: { icon: "today" },
   },
   {
-    path: "completed",
-    component: CompletedComponent,
-    pathMatch: "full",
     title: "Completed",
+    path: "completed",
+    pathMatch: "full",
+    loadComponent: () => import("@/pages/completed"),
     data: { icon: "check" },
   },
   {
-    path: "settings",
-    component: SettingsComponent,
-    pathMatch: "full",
     title: "Settings",
+    path: "settings",
+    pathMatch: "full",
+    loadComponent: () => import("@/pages/settings"),
     data: { icon: "settings" },
   },
 ];

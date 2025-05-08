@@ -1,5 +1,5 @@
+import { Task } from "@/services/task";
 import { Directive, HostListener, inject, Input } from "@angular/core";
-import { Task } from "../../../services/task";
 import { NgdTaskDeleteService } from "./service";
 
 @Directive({ selector: "[ngd-task-delete]" })

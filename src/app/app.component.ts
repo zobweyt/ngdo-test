@@ -26,12 +26,12 @@ import {
   RouterOutlet,
 } from "@angular/router";
 import { filter, map, startWith, switchMap } from "rxjs";
-import { NgdPlaceholderModule } from "../components/placeholder";
-import { TaskEditFormComponent } from "../components/task-edit-form/task-edit-form.component";
-import { NgdTaskDelete } from "../features/task/delete";
-import { fade } from "../lib/animations";
-import { ListService } from "../services/list";
-import { TaskService } from "../services/task/task.service";
+import { NgdPlaceholderModule } from "@/components/placeholder";
+import { TaskEditFormComponent } from "@/components/task-edit-form/task-edit-form.component";
+import { NgdTaskDelete } from "@/features/task/delete";
+import { fade } from "@/lib/animations";
+import { ListService } from "@/services/list";
+import { TaskService } from "@/services/task/task.service";
 import { ngdoRoutes } from "./app.routes";
 
 @Component({

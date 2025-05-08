@@ -1,4 +1,4 @@
-import { Theme } from "../theme";
+import { Theme } from "@/services/theme";
 
 export interface Settings {
   theme: Theme;

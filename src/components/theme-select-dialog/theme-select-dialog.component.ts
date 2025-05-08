@@ -1,3 +1,5 @@
+import { SettingsService } from "@/services/settings";
+import { THEMES, ThemeService } from "@/services/theme";
 import { Component, inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
@@ -9,8 +11,6 @@ import {
   MatDialogTitle,
 } from "@angular/material/dialog";
 import { MatListModule } from "@angular/material/list";
-import { SettingsService } from "../../services/settings";
-import { THEMES, ThemeService } from "../../services/theme";
 
 @Component({
   selector: "delete-task-dialog",

@@ -1,3 +1,4 @@
+import { SettingsService } from "@/services/settings/settings.service";
 import { Component, inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
@@ -9,7 +10,6 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from "@angular/material/dialog";
-import { SettingsService } from "../../../../services/settings/settings.service";
 import { NgdTaskDeleteDialogData } from "./model";
 
 @Component({

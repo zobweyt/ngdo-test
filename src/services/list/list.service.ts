@@ -1,7 +1,7 @@
+import { CreatenewListDialog } from "@/components/create-new-list-dialog/create-new-list-dialog.component";
 import { inject, Injectable, signal } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { CreatenewListDialog } from "../../components/create-new-list-dialog/create-new-list-dialog.component";
 
 @Injectable({ providedIn: "root" })
 export class ListService {

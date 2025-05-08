@@ -1,8 +1,8 @@
+import { SettingsService } from "@/services/settings";
+import { Task, TaskService } from "@/services/task";
 import { inject, Injectable } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { SettingsService } from "../../../services/settings";
-import { Task, TaskService } from "../../../services/task";
 import { NgdTaskDeleteDialog } from "./dialog/component";
 import { NgdTaskDeleteSnackBar } from "./snack-bar/component";
 

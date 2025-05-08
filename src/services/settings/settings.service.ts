@@ -1,5 +1,5 @@
 import { effect, Injectable } from "@angular/core";
-import { store } from "../../lib/store";
+import { store } from "@/lib/store";
 import {
   DEFAULT_SETTINGS,
   LOCAL_STORAGE_SETTINGS_KEY,

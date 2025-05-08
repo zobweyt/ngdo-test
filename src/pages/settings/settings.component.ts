@@ -1,3 +1,6 @@
+import { ThemeSelectDialog } from "@/components/theme-select-dialog/theme-select-dialog.component";
+import { SettingsService } from "@/services/settings/settings.service";
+import { THEMES, ThemeService } from "@/services/theme";
 import { Component, inject } from "@angular/core";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialog } from "@angular/material/dialog";
@@ -7,9 +10,6 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatSliderModule } from "@angular/material/slider";
-import { ThemeSelectDialog } from "../../components/theme-select-dialog/theme-select-dialog.component";
-import { SettingsService } from "../../services/settings/settings.service";
-import { THEMES, ThemeService } from "../../services/theme";
 
 @Component({
   selector: "ngd-settings",

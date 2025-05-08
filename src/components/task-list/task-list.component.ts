@@ -1,3 +1,5 @@
+import { fadeHeight } from "@/lib/animations";
+import { TaskListType, TaskService } from "@/services/task";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { DatePipe } from "@angular/common";
 import { AfterViewInit, Component, inject, Input } from "@angular/core";
@@ -5,8 +7,6 @@ import { toSignal } from "@angular/core/rxjs-interop";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatListModule } from "@angular/material/list";
 import { map } from "rxjs";
-import { fadeHeight } from "../../lib/animations";
-import { TaskListType, TaskService } from "../../services/task";
 
 @Component({
   selector: "ngd-task-list",

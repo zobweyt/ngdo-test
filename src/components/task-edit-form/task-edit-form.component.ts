@@ -1,3 +1,4 @@
+import { Task, TaskService } from "@/services/task";
 import { Component, inject, Input, OnChanges, OnInit } from "@angular/core";
 import {
   FormControl,
@@ -7,7 +8,6 @@ import {
 } from "@angular/forms";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatButtonModule } from "@angular/material/button";
-import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -22,7 +22,6 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatTimepickerModule } from "@angular/material/timepicker";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { Task, TaskService } from "../../services/task";
 
 @Component({
   selector: "ngd-task-edit-form",
