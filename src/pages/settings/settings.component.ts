@@ -1,6 +1,6 @@
-import { ThemeSelectDialog } from "@/components/theme-select-dialog/theme-select-dialog.component";
-import { SettingsService } from "@/services/settings/settings.service";
-import { THEMES, ThemeService } from "@/services/theme";
+import { ThemeSelectDialog } from "@/features/theme/update/theme-select-dialog/theme-select-dialog.component";
+import { SettingsService } from "@/entities/settings/settings.service";
+import { THEMES, ThemeService } from "@/entities/theme";
 import { Component, inject } from "@angular/core";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialog } from "@angular/material/dialog";

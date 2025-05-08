@@ -1,5 +1,5 @@
-import { ColorSchemeService } from "@/services/color-scheme";
-import { SettingsService } from "@/services/settings";
+import { ColorSchemeService } from "@/entities/color-scheme";
+import { SettingsService } from "@/entities/settings";
 import { effect, inject, Injectable } from "@angular/core";
 import { THEME_DISPLAY_NAMES } from "./theme.constants";
 import { Theme } from "./theme.model";

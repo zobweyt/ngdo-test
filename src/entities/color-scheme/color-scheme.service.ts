@@ -1,4 +1,4 @@
-import { Theme } from "@/services/theme";
+import { Theme } from "@/entities/theme";
 import { computed, effect, Injectable, signal } from "@angular/core";
 
 @Injectable({ providedIn: "root" })

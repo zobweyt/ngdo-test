@@ -1,4 +1,4 @@
-import { SettingsService } from "@/services/settings/settings.service";
+import { SettingsService } from "@/entities/settings/settings.service";
 import { Component, inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";

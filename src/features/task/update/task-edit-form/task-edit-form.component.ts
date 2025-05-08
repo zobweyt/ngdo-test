@@ -1,4 +1,4 @@
-import { Task, TaskService } from "@/services/task";
+import { Task, TaskService } from "@/entities/task";
 import { Component, inject, Input, OnChanges, OnInit } from "@angular/core";
 import {
   FormControl,

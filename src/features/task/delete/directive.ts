@@ -1,4 +1,4 @@
-import { Task } from "@/services/task";
+import { Task } from "@/entities/task";
 import { Directive, HostListener, inject, Input } from "@angular/core";
 import { NgdTaskDeleteService } from "./service";
 

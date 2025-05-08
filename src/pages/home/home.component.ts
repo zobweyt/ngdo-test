@@ -1,7 +1,7 @@
-import { NgdPlaceholderModule } from "@/components/placeholder";
-import { TaskListComponent } from "@/components/task-list/task-list.component";
-import { fade } from "@/lib/animations";
-import { TaskService } from "@/services/task";
+import { NgdPlaceholderModule } from "@/shared/ui/placeholder";
+import { TaskListComponent } from "@/widgets/task/task-list/task-list.component";
+import { fade } from "@/shared/lib/animations";
+import { TaskService } from "@/entities/task";
 import { Component, inject } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MatButtonModule, MatIconButton } from "@angular/material/button";

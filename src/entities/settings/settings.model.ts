@@ -1,4 +1,4 @@
-import { Theme } from "@/services/theme";
+import { Theme } from "@/entities/theme";
 
 export interface Settings {
   theme: Theme;

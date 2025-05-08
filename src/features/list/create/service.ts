@@ -1,4 +1,4 @@
-import { ListService } from "@/services/list";
+import { ListService } from "@/entities/list";
 import { inject, Injectable } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";

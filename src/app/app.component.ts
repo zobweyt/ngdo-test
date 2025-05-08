@@ -1,10 +1,10 @@
-import { NgdPlaceholderModule } from "@/components/placeholder";
-import { TaskEditFormComponent } from "@/components/task-edit-form/task-edit-form.component";
+import { NgdPlaceholderModule } from "@/shared/ui/placeholder";
+import { TaskEditFormComponent } from "@/features/task/update/task-edit-form/task-edit-form.component";
 import { ListCreateService } from "@/features/list/create";
 import { NgdTaskDelete } from "@/features/task/delete";
-import { fade, fadeHeight } from "@/lib/animations";
-import { ListService } from "@/services/list";
-import { TaskService } from "@/services/task/task.service";
+import { fade, fadeHeight } from "@/shared/lib/animations";
+import { ListService } from "@/entities/list";
+import { TaskService } from "@/entities/task/task.service";
 import {
   CdkDrag,
   CdkDragDrop,
@@ -69,7 +69,7 @@ import { routes } from "./app.routes";
   animations: [fade, fadeHeight],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements AfterViewInit {
+export class NgdRoot implements AfterViewInit {
   readonly name = "ngdo";
   readonly navItems = routes.filter((route) => route.pathMatch === "full");
 

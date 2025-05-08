@@ -6,13 +6,13 @@ import {
 } from "@angular/core";
 import { provideRouter } from "@angular/router";
 
-import { ThemeService } from "@/services/theme";
+import { ThemeService } from "@/entities/theme";
 import { provideNativeDateAdapter } from "@angular/material/core";
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from "@angular/material/snack-bar";
 import { provideAnimations } from "@angular/platform-browser/animations";
 import { routes } from "./app.routes";
 
-export const appConfig: ApplicationConfig = {
+export const config: ApplicationConfig = {
   providers: [
     provideAppInitializer(() => {
       inject(ThemeService);

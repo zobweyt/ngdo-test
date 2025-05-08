@@ -1,5 +1,5 @@
-import { fadeHeight } from "@/lib/animations";
-import { TaskListType, TaskService } from "@/services/task";
+import { fadeHeight } from "@/shared/lib/animations";
+import { TaskListType, TaskService } from "@/entities/task";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { DatePipe } from "@angular/common";
 import { AfterViewInit, Component, inject, Input } from "@angular/core";

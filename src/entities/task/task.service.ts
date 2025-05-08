@@ -1,4 +1,4 @@
-import { SettingsService } from "@/services/settings";
+import { SettingsService } from "@/entities/settings";
 import { computed, effect, inject, Injectable, signal } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";

@@ -14,8 +14,8 @@
           "builder": "@angular/build:application",
           "options": {
             "outputPath": "dist/ngdo",
-            "index": "src/index.html",
-            "browser": "src/index.ts",
+            "index": "src/app/index.html",
+            "browser": "src/app/index.ts",
             "polyfills": [],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -25,7 +25,7 @@
               }
             ],
             "styles": [
-              "src/index.scss"
+              "src/app/styles/index.scss"
             ],
             "scripts": []
           },

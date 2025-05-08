@@ -1,5 +1,5 @@
-import { SettingsService } from "@/services/settings";
-import { Task, TaskService } from "@/services/task";
+import { SettingsService } from "@/entities/settings";
+import { Task, TaskService } from "@/entities/task";
 import { inject, Injectable } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
