@@ -14,7 +14,7 @@ export class NgdTaskDeleteService {
   private readonly snackBar = inject(MatSnackBar);
 
   public deleteTask(tasks: Task[]) {
-    if (this.settings.confirmTaskDeletion && tasks.length !== 1) {
+    if (this.settings.confirmTaskDeletion || tasks.length !== 1) {
       this.tryDeleteTask(tasks);
     } else {
       this.forceDeleteTask(tasks);
@@ -36,7 +36,7 @@ export class NgdTaskDeleteService {
   private forceDeleteTask(tasks: Task[]) {
     this.service.deleteTasksByIds(tasks.map(({ id }) => id));
 
-    if (this.settings.showTaskDeletionSnackbar && tasks.length !== 1) {
+    if (this.settings.showTaskDeletionSnackbar || tasks.length !== 1) {
       this.openTaskDeleteSnackBar(tasks);
     }
   }
