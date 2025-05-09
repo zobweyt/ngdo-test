@@ -139,8 +139,7 @@
           <mat-menu #selectedTaskMoreMenu="matMenu">
             <button
               mat-menu-item
-              ngd-task-delete
-              [tasks]="[taskSelectService.selectedTask()!]"
+              (click)="taskDeleteService.deleteTasks([taskSelectService.selectedTask()!])"
             >
               <mat-icon aria-label="Delete icon">
                 delete

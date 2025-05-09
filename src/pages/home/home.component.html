@@ -1,18 +1,10 @@
+<ngd-task-create-form
+  #form="ngdTaskCreateForm"
+  (create)="taskService.createTask($event)"
+/>
 
-<form (submit)="taskService.createTask(newTask); newTask = ''">
-  <mat-form-field class="mdc-text-field--round">
-    <mat-icon matPrefix style="padding-inline-start: 16px;">check_box_outline_blank</mat-icon>
-    <input #input matInput name="title" placeholder="Create new task" [(ngModel)]="newTask" />  
-    @if (newTask) {
-      <button matSuffix matTooltip="Create task" mat-icon-button aria-label="Submit" @fade>
-        <mat-icon>keyboard_return</mat-icon>
-      </button>
-    }
-  </mat-form-field>
-</form>
-
-@if (taskService.activeTasks().length) {
-  <ngd-task-list [tasks]="taskService.activeTasks()" />
+@if (tasks().length) {
+  <ngd-task-list [tasks]="tasks()" />
 } @else {
   <ngd-placeholder>
     <mat-icon ngdPlaceholderIcon>done_all</mat-icon>
@@ -22,7 +14,13 @@
     <p ngdPlaceholderDescription>
       There are no more active tasks
     </p>
-    <button type="button" mat-button mat-flat-button ngdPlaceholderAction (click)="input.focus()">
+    <button
+      type="button"
+      mat-button
+      mat-flat-button
+      ngdPlaceholderAction
+      (click)="form.input.focus()"
+    >
       <mat-icon>add</mat-icon>
       Create new task
     </button>

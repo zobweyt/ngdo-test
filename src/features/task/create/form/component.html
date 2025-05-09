@@ -1,0 +1,28 @@
+<form (submit)="handleSubmit()" [formGroup]="form">
+  <mat-form-field class="mdc-text-field--round">
+    <mat-icon matPrefix style="padding-inline-start: 16px">
+      check_box_outline_blank
+    </mat-icon>
+    <input
+      matInput
+      required
+      minlength="1"
+      maxlength="64"
+      formControlName="title"
+      placeholder="Create new task"
+    />
+    @if (form.valid) {
+      <button
+        mat-icon-button
+        matSuffix
+        matTooltip="Create task"
+        aria-label="Create task"
+        type="submit"
+        [disabled]="form.invalid"
+        @fade
+      >
+        <mat-icon>keyboard_return</mat-icon>
+      </button>
+    }
+  </mat-form-field>
+</form>

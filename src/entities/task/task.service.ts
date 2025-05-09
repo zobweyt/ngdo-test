@@ -25,7 +25,7 @@ export class TaskService {
       return taskDate && taskDate >= today && taskDate < tomorrow;
     });
   });
-  
+
   constructor() {
     effect(() => {
       this.save(this.tasks());
@@ -36,6 +36,18 @@ export class TaskService {
     this.tasks.update((prev) => [{
       id: uuidv4(),
       title: title.trim(),
+      completed: false,
+    }, ...prev]);
+  }
+
+  public createTaskToday(title: string): void {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    this.tasks.update((prev) => [{
+      id: uuidv4(),
+      title: title.trim(),
+      date: today,
       completed: false,
     }, ...prev]);
   }

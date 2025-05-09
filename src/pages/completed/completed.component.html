@@ -1,16 +1,15 @@
-@if (taskService.completedTasks().length) {
+@if (tasks().length) {
   <button
     type="button"
     mat-button
     mat-stroked-button
     style="margin: 8px"
-    ngd-task-delete
-    [tasks]="taskService.completedTasks()"
+    (click)="taskDeleteService.deleteTasks(tasks())"
   >
     Delete all completed tasks
   </button>
 
-  <ngd-task-list [tasks]="taskService.completedTasks()" />
+  <ngd-task-list [tasks]="tasks()" />
 } @else {
   <ngd-placeholder>
     <mat-icon ngdPlaceholderIcon>check_box_outline_blank</mat-icon>

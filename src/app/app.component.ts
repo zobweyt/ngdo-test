@@ -1,7 +1,8 @@
 import { ListService } from "@/entities/list";
 import { TaskService } from "@/entities/task/task.service";
 import { ListCreateService } from "@/features/list/create";
-import { NgdTaskDelete } from "@/features/task/delete";
+import { NgdTaskDeleteService } from "@/features/task/delete";
+import { NgdTaskSelectService } from "@/features/task/select";
 import { TaskEditFormComponent } from "@/features/task/update/task-edit-form/task-edit-form.component";
 import { fade, fadeHeight } from "@/shared/lib/animations";
 import { NgdPlaceholderModule } from "@/shared/ui/placeholder";
@@ -41,7 +42,6 @@ import {
 } from "@angular/router";
 import { filter, map, startWith, switchMap } from "rxjs";
 import { routes } from "./app.routes";
-import { NgdTaskSelectService } from "@/features/task/select";
 
 @Component({
   selector: "ngd-root",
@@ -59,7 +59,6 @@ import { NgdTaskSelectService } from "@/features/task/select";
     MatToolbarModule,
     MatTooltipModule,
     NgdPlaceholderModule,
-    NgdTaskDelete,
     RouterLink,
     RouterLinkActive,
     RouterOutlet,
@@ -78,9 +77,10 @@ export class NgdRoot implements AfterViewInit {
   private router = inject(Router);
   private breakpointObserver = inject(BreakpointObserver);
   readonly taskService = inject(TaskService);
+  readonly taskDeleteService = inject(NgdTaskDeleteService);
+  readonly taskSelectService = inject(NgdTaskSelectService);
   readonly listService = inject(ListService);
   readonly listCreateService = inject(ListCreateService);
-  readonly taskSelectService = inject(NgdTaskSelectService);
 
   readonly title = toSignal(
     this.router.events.pipe(

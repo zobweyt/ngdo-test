@@ -1,5 +1,10 @@
-@if (taskService.todayTasks().length) {
-  <ngd-task-list [tasks]="taskService.todayTasks()" />
+<ngd-task-create-form
+  #form="ngdTaskCreateForm"
+  (create)="taskService.createTaskToday($event)"
+/>
+
+@if (tasks().length) {
+  <ngd-task-list [tasks]="tasks()" />
 } @else {
   <ngd-placeholder>
     <mat-icon ngdPlaceholderIcon>wb_sunny</mat-icon>
@@ -9,9 +14,15 @@
     <p ngdPlaceholderDescription>
       There are no more active tasks for today
     </p>
-    <a routerLink="" mat-button mat-flat-button ngdPlaceholderAction>
+    <button
+      type="button"
+      mat-button
+      mat-flat-button
+      ngdPlaceholderAction
+      (click)="form.input.focus()"
+    >
       <mat-icon>add</mat-icon>
       Create new task
-    </a>
+    </button>
   </ngd-placeholder>
 }
