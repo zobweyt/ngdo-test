@@ -1,3 +1,7 @@
+import CompletedComponent from "@/pages/completed";
+import HomeComponent from "@/pages/home";
+import SettingsComponent from "@/pages/settings";
+import TodayComponent from "@/pages/today";
 import { Routes } from "@angular/router";
 
 export const routes: Routes = [
@@ -5,28 +9,28 @@ export const routes: Routes = [
     title: "All",
     path: "",
     pathMatch: "full",
-    loadComponent: () => import("@/pages/home"),
+    component: HomeComponent,
     data: { icon: "home" },
   },
   {
     title: "Today",
     path: "today",
     pathMatch: "full",
-    loadComponent: () => import("@/pages/today"),
+    component: TodayComponent,
     data: { icon: "today" },
   },
   {
     title: "Completed",
     path: "completed",
     pathMatch: "full",
-    loadComponent: () => import("@/pages/completed"),
+    component: CompletedComponent,
     data: { icon: "check" },
   },
   {
     title: "Settings",
     path: "settings",
     pathMatch: "full",
-    loadComponent: () => import("@/pages/settings"),
+    component: SettingsComponent,
     data: { icon: "settings" },
   },
 ];
