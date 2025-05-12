@@ -12,3 +12,7 @@
     padding-inline: 8px;
   }
 }
+
+.mat-mdc-list-item:has(.mat-mdc-checkbox-checked) .mat-mdc-list-item-title {
+  text-decoration: line-through;
+}
