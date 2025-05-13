@@ -16,8 +16,8 @@
     (
       color: (
         theme-type: light,
-        primary: theme-colors.$primary,
-        tertiary: theme-colors.$tertiary,
+        primary: theme-colors.$primary-palette,
+        tertiary: theme-colors.$tertiary-palette,
       ),
       typography: Roboto,
       density: 0,
@@ -44,8 +44,8 @@
     (
       color: (
         theme-type: dark,
-        primary: theme-colors.$primary,
-        tertiary: theme-colors.$tertiary,
+        primary: theme-colors.$primary-palette,
+        tertiary: theme-colors.$tertiary-palette,
       ),
       typography: Roboto,
       density: 0,
