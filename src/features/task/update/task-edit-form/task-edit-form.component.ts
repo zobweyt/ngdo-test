@@ -49,7 +49,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
   templateUrl: "./task-edit-form.component.html",
   styleUrl: "./task-edit-form.component.scss",
 })
-export class TaskEditFormComponent implements OnInit, OnChanges {
+export class NgdTaskEditForm implements OnInit, OnChanges {
   @Input("task")
   public task!: Task;
 

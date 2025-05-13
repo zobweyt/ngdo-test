@@ -1,0 +1,1 @@
+export { NgdListNavList } from "./component";

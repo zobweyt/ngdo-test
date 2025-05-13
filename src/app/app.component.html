@@ -24,58 +24,12 @@
         </button>
       }
     </mat-toolbar>
-    <div style="overflow-y: auto;">
-      <mat-nav-list>
-        <div mat-subheader>Tasks</div>
-        @for (item of navItems; track item) {
-          <a
-            mat-list-item
-            routerLinkActive
-            #rla="routerLinkActive"
-            [activated]="rla.isActive"
-            [routerLink]="[item.path]"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            @if (item.data && item.data["icon"]) {
-              <mat-icon matListItemIcon>
-                {{ item.data["icon"] }}
-              </mat-icon>
-            }
-            <span matListItemTitle>{{ item.title }}</span>
-            @if (getTasksLengthByRouteName(item.path)) {
-              <span matListItemMeta style="font: var(--mat-sys-body-large)" @fade>
-                {{ getTasksLengthByRouteName(item.path) }}
-              </span>
-            }
-          </a>
-        }
-        <mat-divider />
-        <div mat-subheader>Lists</div>
-        <div
-          id="lists"
-          cdkDropList
-          cdkDropListLockAxis="y"
-          cdkDropListOrientation="vertical"
-          (cdkDropListDropped)="dropList($event)"
-        >
-          @for (list of listService.lists(); track list) {
-            <a
-              mat-list-item
-              routerLink="/"
-              cdkDrag
-              cdkDragBoundary="#lists"
-              [cdkDragStartDelay]="50"
-              @fadeHeight
-              [@.disabled]="!viewInitialized"
-            >
-              <mat-icon matListItemIcon>folder</mat-icon>
-              <span matListItemTitle>{{ list }}</span>
-            </a>
-          }
-        </div>
-      </mat-nav-list>
+    <div style="overflow-y: auto; flex: 1">
+      <ngd-task-nav-list />
+      <mat-divider style="margin-inline: 0" />
+      <ngd-list-nav-list />
     </div>
-    <mat-nav-list style="flex: 0; margin-top: auto; background-color: var(--mat-sys-background); border-top: 1px solid var(--mat-sys-surface-container); padding-block: 16px;"> 
+    <mat-nav-list style="flex: 0; background-color: var(--mat-sys-background); border-top: 1px solid var(--mat-sys-surface-container); padding-block: 16px;"> 
       <mat-list-item
         role="button"
         tabindex="0"

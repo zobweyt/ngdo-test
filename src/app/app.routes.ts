@@ -6,7 +6,7 @@ import { Routes } from "@angular/router";
 
 export const routes: Routes = [
   {
-    title: "All",
+    title: "Home",
     path: "",
     pathMatch: "full",
     component: HomeComponent,

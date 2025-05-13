@@ -1,0 +1,31 @@
+<mat-nav-list>
+  <div mat-subheader>
+    Lists
+  </div>
+  <div
+    id="lists"
+    cdkDropList
+    cdkDropListLockAxis="y"
+    cdkDropListOrientation="vertical"
+    (cdkDropListDropped)="dropList($event)"
+  >
+    @for (list of service.lists(); track list) {
+      <a
+        mat-list-item
+        routerLink="/"
+        cdkDrag
+        cdkDragBoundary="#lists"
+        [cdkDragStartDelay]="50"
+        @fadeHeight
+        [@.disabled]="!viewInitialized"
+      >
+        <mat-icon matListItemIcon>
+          folder
+        </mat-icon>
+        <span matListItemTitle>
+          {{ list }}
+        </span>
+      </a>
+      }
+  </div>
+</mat-nav-list>

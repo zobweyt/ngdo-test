@@ -1,0 +1,23 @@
+.cdk-drag-preview {
+  cursor: move;
+  box-shadow: var(--mat-sys-level3);
+  border-radius: var(--mat-sys-corner-full);
+  background-color: var(--mat-sys-surface-variant);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating,
+.cdk-drop-list-dragging .mat-mdc-list-item:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.mat-drawer.mat-drawer-side .mat-divider.mat-divider-horizontal {
+  margin-inline: -16px !important;
+}
+
+.mat-drawer.mat-drawer-over .mat-divider.mat-divider-horizontal {
+  margin-inline: -8px !important;
+}

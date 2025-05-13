@@ -121,6 +121,14 @@ body {
   border-radius: 0 !important;
 }
 
+.mat-drawer.mat-drawer-side[position="start"] .mat-mdc-nav-list {
+  padding-inline: 16px;
+}
+
+.mat-drawer.mat-drawer-over[position="start"] .mat-mdc-nav-list {
+  padding-inline: 8px;
+}
+
 .mat-drawer.mat-drawer-side[position="start"] {
   border-inline-end: 1px solid var(--mat-sys-surface-container);
 }

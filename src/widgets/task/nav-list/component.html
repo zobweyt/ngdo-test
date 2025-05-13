@@ -1,0 +1,25 @@
+<mat-nav-list>
+  <div mat-subheader>Tasks</div>
+  @for (item of items; track item) {
+    <a
+      mat-list-item
+      routerLinkActive
+      #rla="routerLinkActive"
+      [activated]="rla.isActive"
+      [routerLink]="[item.path]"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      @if (item.data && item.data["icon"]) {
+        <mat-icon matListItemIcon>
+          {{ item.data["icon"] }}
+        </mat-icon>
+      }
+      <span matListItemTitle>{{ item.title }}</span>
+      @if (getTasksLengthByRouteName(item.path)) {
+        <span matListItemMeta style="font: var(--mat-sys-body-large)" @fade>
+          {{ getTasksLengthByRouteName(item.path) }}
+        </span>
+      }
+    </a>
+  }
+</mat-nav-list>
