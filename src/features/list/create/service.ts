@@ -16,7 +16,7 @@ export class ListCreateService {
 
     dialog.afterClosed().pipe(filter((name) => !!name)).subscribe((name) => {
       this.service.createList(name);
-      this.snackBar.open(`List "${name}" created!`);
+      // this.snackBar.open(`List "${name}" created!`);
     });
   }
 }

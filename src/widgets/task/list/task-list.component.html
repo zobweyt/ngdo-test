@@ -1,7 +1,11 @@
 <mat-nav-list aria-label="Select a task" style="margin-inline: 8px;">
   @for (task of tasks; track task.id) {
-    <mat-list-item
+    <mat-list-item    
+      role="listitem"
+      tabindex="0"
       (click)="taskSelectService.selectTask(task.id)"
+      (keydown.enter)="taskSelectService.selectTask(task.id)"
+      (keydown.space)="taskSelectService.selectTask(task.id)"
       [activated]="isWebLandscape() && taskSelectService.isSelectedTask(task)"
       [@.disabled]="viewInitialized === false"
       [@fadeHeight]
