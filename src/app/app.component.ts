@@ -1,6 +1,7 @@
 import { ListService } from "@/entities/list";
 import { TaskService } from "@/entities/task/task.service";
 import { ListCreateService } from "@/features/list/create";
+import { NgdSidenavService } from "@/features/sidenav";
 import { NgdTaskDeleteService } from "@/features/task/delete";
 import { NgdTaskSelectService } from "@/features/task/select";
 import { TaskEditFormComponent } from "@/features/task/update/task-edit-form/task-edit-form.component";
@@ -18,6 +19,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   effect,
+  HostListener,
   inject,
   ViewChild,
 } from "@angular/core";
@@ -33,14 +35,12 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import {
-  ActivatedRoute,
-  NavigationEnd,
   Router,
   RouterLink,
   RouterLinkActive,
   RouterOutlet,
 } from "@angular/router";
-import { filter, map, startWith, switchMap } from "rxjs";
+import { map } from "rxjs";
 import { routes } from "./app.routes";
 
 @Component({
@@ -70,10 +70,8 @@ import { routes } from "./app.routes";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgdRoot implements AfterViewInit {
-  readonly name = "ngdo";
   readonly navItems = routes.filter((route) => route.pathMatch === "full");
 
-  private route = inject(ActivatedRoute);
   private router = inject(Router);
   private breakpointObserver = inject(BreakpointObserver);
   readonly taskService = inject(TaskService);
@@ -81,15 +79,7 @@ export class NgdRoot implements AfterViewInit {
   readonly taskSelectService = inject(NgdTaskSelectService);
   readonly listService = inject(ListService);
   readonly listCreateService = inject(ListCreateService);
-
-  readonly title = toSignal(
-    this.router.events.pipe(
-      filter((evt) => evt instanceof NavigationEnd),
-      startWith(null),
-      switchMap(() => this.leaf.title),
-    ),
-    { requireSync: true },
-  );
+  readonly sidenavService = inject(NgdSidenavService);
 
   readonly isHandset = toSignal(
     this.breakpointObserver.observe([
@@ -114,14 +104,6 @@ export class NgdRoot implements AfterViewInit {
   @ViewChild("secondarySidenav")
   private secondarySidenav!: MatSidenav;
 
-  get leaf(): ActivatedRoute {
-    let leaf = this.route;
-    while (leaf.firstChild) {
-      leaf = leaf.firstChild;
-    }
-    return leaf;
-  }
-
   viewInitialized: boolean = false;
 
   constructor() {
@@ -132,7 +114,9 @@ export class NgdRoot implements AfterViewInit {
     });
 
     effect(() => {
-      if (this.taskSelectService.selectedTask() === null && this.isWebLandscape()) {
+      if (
+        this.taskSelectService.selectedTask() === null && this.isWebLandscape()
+      ) {
         this.closeSecondaryFullView();
       }
     });
@@ -162,6 +146,8 @@ export class NgdRoot implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.viewInitialized = true;
+    this.sidenavService.primary.set(this.primarySidenav);
+    this.sidenavService.secondary.set(this.secondarySidenav);
   }
 
   getTasksLengthByRouteName(path: string | undefined): number | undefined {
@@ -174,6 +160,21 @@ export class NgdRoot implements AfterViewInit {
         return this.taskService.completedTasks().length || undefined;
       default:
         return undefined;
+    }
+  }
+
+  @HostListener("window:keydown.delete", ["$event"])
+  tryDelete(event: KeyboardEvent) {
+    if (
+      (event.target as HTMLElement).tagName === "INPUT" ||
+      (event.target as HTMLElement).tagName === "TEXTAREA"
+    ) {
+      return;
+    }
+
+    const selectedTask = this.taskSelectService.selectedTask();
+    if (selectedTask) {
+      this.taskDeleteService.deleteTasks([selectedTask]);
     }
   }
 }

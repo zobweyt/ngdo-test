@@ -1,6 +1,7 @@
-import { ThemeSelectDialog } from "@/features/theme/update/theme-select-dialog/theme-select-dialog.component";
 import { SettingsService } from "@/entities/settings/settings.service";
 import { THEMES, ThemeService } from "@/entities/theme";
+import { ThemeSelectDialog } from "@/features/theme/update/theme-select-dialog/theme-select-dialog.component";
+import { NgdToolbar } from "@/widgets/toolbar/component";
 import { Component, inject } from "@angular/core";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialog } from "@angular/material/dialog";
@@ -21,6 +22,7 @@ import { MatSliderModule } from "@angular/material/slider";
     MatListModule,
     MatSliderModule,
     MatSlideToggleModule,
+    NgdToolbar,
   ],
   templateUrl: "./settings.component.html",
   styleUrl: "./settings.component.scss",

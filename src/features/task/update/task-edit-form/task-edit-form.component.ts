@@ -69,7 +69,7 @@ export class TaskEditFormComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.form.valueChanges.subscribe((data) => {
       // todo form.hasErrors
-      if (this.titleFormControl.value?.length < 2) {
+      if (this.titleFormControl.value?.length < 1) {
         return;
       }
 

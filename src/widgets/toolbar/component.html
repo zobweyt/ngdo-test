@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  @if (isHandset()) {
+    <button
+      type="button"
+      mat-icon-button
+      aria-label="Open primary sidenav"
+      matTooltip="Open primary sidenav"
+      (click)="sidenav.primary()?.open()"
+    >
+      <mat-icon aria-label="Menu icon">menu</mat-icon>
+    </button>
+  }
+  <span style="margin-inline-end: auto">
+    {{ title() }}
+  </span>
+  <ng-content />
+</mat-toolbar>

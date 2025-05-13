@@ -14,11 +14,10 @@
       </span>
       @if (isHandset()) {
         <button
+          mat-icon-button
           type="button"
           aria-label="Close primary sidenav"
-          mat-icon-button
           matTooltip="Close primary sidenav"
-          matTooltipShowDelay="300"
           (click)="primarySidenav.close()"
         >
           <mat-icon aria-label="Close icon">close</mat-icon>
@@ -80,21 +79,6 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      @if (isHandset()) {
-        <button
-          type="button"
-          aria-label="Open primary sidenav"
-          mat-icon-button
-          matTooltip="Open primary sidenav"
-          matTooltipShowDelay="300"
-          (click)="primarySidenav.open()"
-        >
-          <mat-icon aria-label="Menu icon">menu</mat-icon>
-        </button>
-      }
-      <span>{{ title() || name }}</span>
-    </mat-toolbar>
     <router-outlet />
   </mat-sidenav-content>
   <mat-sidenav
@@ -112,11 +96,10 @@
         <span>
           @if (isWebLandscape() && secondarySidenav.mode === "side") {
             <button
+              mat-icon-button
               type="button"
               aria-label="Open in full view"
-              mat-icon-button
               matTooltip="Open in full view"
-              matTooltipShowDelay="300"
               (click)="openSecondaryFullView()"
             >
               <mat-icon aria-label="Open in full icon">
@@ -125,11 +108,10 @@
             </button>
           }
           <button
+            mat-icon-button
             type="button"
             aria-label="More options"
-            mat-icon-button
             matTooltip="More options"
-            matTooltipShowDelay="300"
             [matMenuTriggerFor]="selectedTaskMoreMenu"
           >
             <mat-icon aria-label="More vertical icon">
@@ -154,11 +136,10 @@
       @if (!isWebLandscape()) {
         <span style="order: -1; display: flex; align-items: center; gap: 8px">
           <button
+            mat-icon-button
             type="button"
             aria-label="Close secondary sidenav"
-            mat-icon-button
             matTooltip="Close secondary sidenav"
-            matTooltipShowDelay="300"
             (click)="secondarySidenav.close()"
           >
             <mat-icon aria-label="Arrow back icon">arrow_back</mat-icon>
@@ -169,11 +150,10 @@
         @if (secondarySidenav.mode === "over") {
           <span style="order: -1; display: flex; align-items: center; gap: 8px">
             <button
+              mat-icon-button
               type="button"
               aria-label="Close full view"
-              mat-icon-button
               matTooltip="Close full view"
-              matTooltipShowDelay="300"
               (click)="closeSecondaryFullView()"
             >
               <mat-icon aria-label="Arrow back icon">
@@ -186,11 +166,10 @@
         @if (secondarySidenav.mode === "side") {
           <span style="order: -1">
             <button
+              mat-icon-button
               type="button"
               aria-label="Close selected task"
-              mat-icon-button
               matTooltip="Close selected task"
-              matTooltipShowDelay="300"
               (click)="taskSelectService.resetSelectedTask()"
             >
               <mat-icon aria-label="Close icon">close</mat-icon>

@@ -19,7 +19,9 @@
         <span matListItemLine>{{ task.description }}</span>
       }
       @if (task.date) {
-        <time matListItemMeta [attr.datetime]="task.date">{{ task.date | date:"EEEE hh:mm a" }}</time>
+        <span matListItemMeta style="font: var(--mat-sys-body-medium)">
+          <time [attr.datetime]="task.date">{{ task.date | date:"EEEE hh:mm a" }}</time>
+        </span>
       }
     </mat-list-item>
   }

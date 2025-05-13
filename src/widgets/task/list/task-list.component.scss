@@ -1,0 +1,26 @@
+@media (min-width: 959px) {
+  .mat-mdc-nav-list {
+    padding-inline: 8px;
+  }
+}
+
+.mat-mdc-list-item {
+  --mat-list-active-indicator-shape: var(--mat-sys-corner-medium);
+}
+
+.mat-mdc-checkbox.mat-mdc-list-item-avatar {
+  background: transparent;
+  margin-inline: 8px;
+}
+
+.mat-mdc-list-item:has(.mat-mdc-checkbox-checked) .mat-mdc-list-item-title {
+  text-decoration: line-through;
+}
+
+.mdc-list-item.mdc-list-item--with-two-lines .mdc-list-item__start {
+  margin-block: 16px;
+}
+
+.mdc-list-item.mdc-list-item--with-two-lines {
+  --mdc-list-list-item-two-line-container-height: 72px;
+}

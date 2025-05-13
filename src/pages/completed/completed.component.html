@@ -1,14 +1,30 @@
-@if (tasks().length) {
-  <button
-    type="button"
-    mat-button
-    mat-stroked-button
-    style="margin: 8px"
-    (click)="taskDeleteService.deleteTasks(tasks())"
-  >
-    Delete all completed tasks
-  </button>
+<ngd-toolbar>
+  @if (tasks().length) {
+    <button
+      mat-icon-button
+      type="button"
+      aria-label="More options"
+      matTooltip="More options"
+      [matMenuTriggerFor]="moreMenu"
+    >
+      <mat-icon aria-label="More vertical icon">
+        more_vert
+      </mat-icon>
+    </button>
+    <mat-menu #moreMenu="matMenu" xPosition="before">
+      <button mat-menu-item type="button" (click)="taskDeleteService.deleteTasks(tasks())">
+        <mat-icon aria-label="Delete icon">
+          delete
+        </mat-icon>
+        <span>
+          Delete all completed tasks
+        </span>
+      </button>
+    </mat-menu>
+  }
+</ngd-toolbar>
 
+@if (tasks().length) {
   <ngd-task-list [tasks]="tasks()" />
 } @else {
   <ngd-placeholder>

@@ -21,9 +21,9 @@ import { map } from "rxjs";
   styleUrl: "./task-list.component.scss",
   animations: [fadeHeight],
 })
-export class TaskListComponent implements AfterViewInit {
+export class NgdTaskList implements AfterViewInit {
   @Input({ required: true })
-  public tasks!: Task[]
+  public tasks!: Task[];
 
   taskService = inject(TaskService);
   taskSelectService = inject(NgdTaskSelectService);
