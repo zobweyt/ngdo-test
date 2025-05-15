@@ -2,6 +2,7 @@ import { Task, TaskService } from "@/entities/task";
 import { NgdTaskSelectService } from "@/features/task/select";
 import { NgdTaskToggleService } from "@/features/task/toggle";
 import { fadeHeight } from "@/shared/lib/animations";
+import { MarkdownPipe } from "@/shared/lib/markdown";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { DatePipe } from "@angular/common";
 import { AfterViewInit, Component, inject, Input } from "@angular/core";
@@ -14,6 +15,7 @@ import { map } from "rxjs";
   selector: "ngd-task-list",
   imports: [
     DatePipe,
+    MarkdownPipe,
     MatCheckboxModule,
     MatListModule,
   ],

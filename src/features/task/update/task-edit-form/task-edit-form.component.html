@@ -25,14 +25,14 @@
         matInput
         name="description"
         placeholder="Write a description…"
-        [maxLength]="128"
+        [maxLength]="512"
         [cdkAutosizeMinRows]="4"
         [cdkAutosizeMaxRows]="16"
         [cdkTextareaAutosize]="true"
         [formControl]="descriptionFormControl"
       ></textarea>
       <mat-hint align="end">
-        {{ descriptionFormControl.value?.length || 0 }} / 256
+        {{ descriptionFormControl.value?.length || 0 }} / 512
       </mat-hint>
     </mat-form-field>
   </p>

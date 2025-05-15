@@ -17,6 +17,7 @@
     "@angular/material": "^19.2.15",
     "@angular/platform-browser": "^19.2.10",
     "@angular/router": "^19.2.10",
+    "marked": "^15.0.11",
     "rxjs": "^7.8.2",
     "uuid": "^11.1.0"
   }

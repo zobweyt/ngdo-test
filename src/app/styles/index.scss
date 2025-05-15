@@ -196,3 +196,20 @@ body {
 .mat-mdc-unelevated-button > .mat-icon {
   --mat-filled-button-icon-offset: 0;
 }
+
+.ngd-markdown {
+  margin-bottom: 1em;
+
+  ul, ol {
+    margin: 0;
+    padding-inline-start: 16px;
+  }
+
+  li {
+    margin-bottom: 0.5em;
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+}

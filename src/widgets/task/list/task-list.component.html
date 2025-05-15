@@ -20,12 +20,12 @@
       />
       <span matListItemTitle>{{ task.title }}</span>
       @if (task.description) {
-        <span matListItemLine>{{ task.description }}</span>
+        <div matListItemLine [innerHTML]="task.description | markdown" class="ngd-markdown"></div>
       }
       @if (task.date) {
-        <span matListItemMeta style="font: var(--mat-sys-body-medium)">
+        <div matListItemMeta style="font: var(--mat-sys-body-medium)">
           <time [attr.datetime]="task.date">{{ task.date | date:"EEEE hh:mm a" }}</time>
-        </span>
+        </div>
       }
     </mat-list-item>
   }
