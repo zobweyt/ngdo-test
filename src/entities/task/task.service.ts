@@ -60,15 +60,30 @@ export class TaskService {
     return this.tasks().find((task) => task.id === id);
   }
 
-  public updateTask(updatedTask: Task): void {
-    const currentTasks = this.tasks();
-    const taskIndex = currentTasks.findIndex((task) =>
-      task.id === updatedTask.id
-    );
+  public getTasksByIds(ids: string[]): Task[] {
+    return this.tasks().filter(({ id }) => ids.includes(id));
+  }
 
-    if (taskIndex !== -1) {
-      currentTasks[taskIndex] = updatedTask;
-      this.tasks.set([...currentTasks]);
+  public toggle(ids: string | string[] | null): void {
+    this.update(ids, ({ completed }) => ({ completed: !completed }));
+  }
+
+  public update(
+    ids: string | string[] | null,
+    updater: ((prev: Task) => Partial<Task>) | Partial<Task>,
+  ): void {
+    for (const id of Array.isArray(ids) ? ids : ids ? [ids] : []) {
+      this.tasks.update((tasks) =>
+        tasks.map((
+          task,
+        ) => (task.id === id
+          ? {
+            ...task,
+            ...(typeof updater === "function" ? updater(task) : updater),
+          }
+          : task)
+        )
+      );
     }
   }
 

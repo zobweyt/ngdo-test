@@ -73,13 +73,10 @@ export class NgdTaskEditForm implements OnInit, OnChanges {
         return;
       }
 
-      // todo partial update accept param
-      this.taskService.updateTask({
-        id: this.task.id,
-        title: data.title.trim() || this.task.title,
-        description: data.description.trim(),
+      this.taskService.update(this.task.id, {
+        title: data.title?.trim() || this.task.title,
+        description: data.description?.trim() || "",
         date: data.date,
-        completed: this.task.completed,
       });
     });
   }

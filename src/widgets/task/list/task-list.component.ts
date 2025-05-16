@@ -1,6 +1,6 @@
 import { Task, TaskService } from "@/entities/task";
 import { NgdTaskSelectService } from "@/features/task/select";
-import { NgdTaskToggleService } from "@/features/task/toggle";
+import { NgdTaskToggleScheduler } from "@/features/task/toggle";
 import { fadeHeight } from "@/shared/lib/animations";
 import { MarkdownPipe } from "@/shared/lib/markdown";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
@@ -29,7 +29,7 @@ export class NgdTaskList implements AfterViewInit {
 
   taskService = inject(TaskService);
   taskSelectService = inject(NgdTaskSelectService);
-  taskToggleService = inject(NgdTaskToggleService);
+  taskToggleScheduler = inject(NgdTaskToggleScheduler);
   breakpointObserver = inject(BreakpointObserver);
   viewInitialized: boolean = false;
 

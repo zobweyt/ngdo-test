@@ -10,7 +10,7 @@ import {
 import { NgdTaskDeleteSnackBarData } from "./model";
 
 @Component({
-  selector: "ngd-delete-task-snack-bar",
+  selector: "ngd-task-delete-snack-bar",
   templateUrl: "component.html",
   styleUrl: "component.scss",
   imports: [

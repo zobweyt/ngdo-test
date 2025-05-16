@@ -13,7 +13,7 @@ import {
 import { NgdTaskDeleteDialogData } from "./model";
 
 @Component({
-  selector: "ngd-delete-task-dialog",
+  selector: "ngd-task-delete-dialog",
   imports: [
     MatButtonModule,
     MatCheckboxModule,

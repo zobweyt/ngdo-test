@@ -1,0 +1,31 @@
+<div matSnackBarLabel>
+  @if (tasks.length === 1) {
+    @if (type === "complete") {
+      Task "{{ tasks[0].title }}" has been marked as completed!
+    } @else if (type === "active") {
+      Task "{{ tasks[0].title }}" has been marked as active!
+    } @else {
+      Task "{{ tasks[0].title }}" has been updated!
+    }
+  } @else {
+    @if (type === "complete") {
+      {{ tasks.length }} tasks have been marked as completed!
+    } @else if (type === "active") {
+      {{ tasks.length }} tasks have been marked as active!
+    } @else {
+      {{ tasks.length }} tasks have been updated!
+    }
+  }
+</div>
+
+<div matSnackBarActions>
+  <button
+    mat-button
+    matSnackBarAction
+    (click)="ref.dismissWithAction()"
+  >
+    <span>
+      Undo
+    </span>
+  </button>
+</div>

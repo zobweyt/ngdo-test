@@ -15,7 +15,7 @@
         aria-label="Toggle task completed state"
         matListItemAvatar
         (click)="$event.stopPropagation()"
-        (change)="taskToggleService.updateTaskCompleted(task.id, $event.checked)"
+        (change)="taskToggleScheduler.schedule(task.id)"
         [checked]="task.completed"
       />
       <span matListItemTitle>{{ task.title }}</span>
