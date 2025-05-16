@@ -69,12 +69,12 @@
 html,
 body {
   height: 100%;
+  touch-action: manipulation;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  touch-action: manipulation;
 }
 
 .mat-sidenav-container {
