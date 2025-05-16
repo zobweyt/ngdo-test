@@ -9,8 +9,8 @@ export class NgdTaskToggleService {
   private readonly settings = inject(SettingsService);
   private readonly snackBar = inject(MatSnackBar);
 
-  private completeTasks: Task[] = [];
-  private completeTasksTimeout: NodeJS.Timeout | null = null;
+  private queue: Task[] = [];
+  private timeout: NodeJS.Timeout | null = null;
 
   public updateTaskCompleted(id: string | null, value: boolean): void {
     const task = this.service.getTaskById(id);
@@ -18,20 +18,20 @@ export class NgdTaskToggleService {
     if (!task) {
       return;
     }
-    if (!this.completeTasks.includes(task)) {
-      this.completeTasks.push(task);
+    if (!this.queue.includes(task)) {
+      this.queue.push(task);
     }
-    if (this.completeTasksTimeout) {
-      clearTimeout(this.completeTasksTimeout);
+    if (this.timeout) {
+      clearTimeout(this.timeout);
     }
 
-    this.completeTasksTimeout = setTimeout(() => {
-      for (const deleteTask of this.completeTasks) {
+    this.timeout = setTimeout(() => {
+      for (const deleteTask of this.queue) {
         this.service.updateTask({ ...deleteTask, completed: value });
       }
 
       if (this.settings.showTaskCompletionSnackbar) {
-        if (this.completeTasks.length === 1) {
+        if (this.queue.length === 1) {
           const bar = this.snackBar.open(
             `Task "${task.title}" completed!`,
             "Cancel",
@@ -43,11 +43,11 @@ export class NgdTaskToggleService {
           });
         } else {
           const bar = this.snackBar.open(
-            `${this.completeTasks.length} tasks completed!`,
+            `${this.queue.length} tasks completed!`,
             "Cancel",
             { duration: 3000 },
           );
-          const cached = structuredClone(this.completeTasks);
+          const cached = structuredClone(this.queue);
           bar.onAction().subscribe(() => {
             for (const completeTask of cached) {
               completeTask.completed = completeTask.completed;
@@ -57,7 +57,7 @@ export class NgdTaskToggleService {
         }
       }
 
-      this.completeTasks = [];
+      this.queue = [];
     }, this.settings.delayAfterCheckMark);
   }
 }
