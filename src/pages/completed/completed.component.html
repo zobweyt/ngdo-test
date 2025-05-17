@@ -1,8 +1,6 @@
 <ngd-toolbar>
   @if (tasks().length) {
     <button
-      @fade
-      [@.disabled]="!viewInitialized"
       mat-icon-button
       type="button"
       aria-label="More options"
@@ -14,7 +12,11 @@
       </mat-icon>
     </button>
     <mat-menu #moreMenu="matMenu" xPosition="before">
-      <button mat-menu-item type="button" (click)="taskDeleteService.deleteTasks(tasks())">
+      <button
+        mat-menu-item
+        type="button"
+        (click)="taskDeleteService.deleteTasks(tasks())"
+      >
         <mat-icon aria-label="Delete icon">
           delete
         </mat-icon>

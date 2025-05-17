@@ -1,35 +1,39 @@
 <mat-nav-list
   [attr.aria-label]='tasks.length === 0 ? "No tasks" : "Select a task"'
   [style.--delay-after-check-mark]="`${settings.delayAfterCheckMark}ms`"
+  style="position: relative;"
 >
   @for (task of tasks; track task.id) {  
-    <mat-list-item
-      role="listitem"
-      tabindex="0"
-      (click)="taskSelector.select(task.id)"
-      (keydown.enter)="taskSelector.select(task.id)"
-      [activated]="isWebLandscape() && taskSelector.isSelectedTaskId(task.id)"
-      [@fadeHeight]
-      [@.disabled]="!viewInitialized"
-    >
-      <mat-checkbox
-        matListItemAvatar
-        #checkbox
-        [attr.aria-label]="checkbox.checked ? 'Mark task as active' : 'Mark task as completed'"
-        (click)="$event.stopPropagation()"
-        (change)="taskToggleScheduler.schedule(task.id)"
-        [checked]="task.completed"
-      />
-      <span matListItemTitle>{{ task.title }}</span>
-      @if (task.description) {
-        <div matListItemLine [innerHTML]="task.description | markdown" class="ngd-markdown"></div>
-      }
-      @if (task.date) {
-        <div matListItemMeta>
-          <time [attr.datetime]="task.date">{{ task.date | date:"EEEE hh:mm a" }}</time>
-        </div>
-      }
-    </mat-list-item>
+    <div class="height-container" [@heightAnimation]>
+      <div class="animation-height-handler"></div>
+      <mat-list-item
+        role="listitem"
+        class="animation-item"
+        tabindex="0"
+        (click)="taskSelector.select(task.id)"
+        (keydown.enter)="taskSelector.select(task.id)"
+        [activated]="isWebLandscape() && taskSelector.isSelectedTaskId(task.id)"
+        [@.disabled]="!viewInitialized"
+      >
+        <mat-checkbox
+          matListItemAvatar
+          #checkbox
+          [attr.aria-label]="checkbox.checked ? 'Mark task as active' : 'Mark task as completed'"
+          (click)="$event.stopPropagation()"
+          (change)="taskToggleScheduler.schedule(task.id)"
+          [checked]="task.completed"
+        />
+        <span matListItemTitle>{{ task.title }}</span>
+        @if (task.description) {
+          <div matListItemLine [innerHTML]="task.description | markdown" class="ngd-markdown"></div>
+        }
+        @if (task.date) {
+          <div matListItemMeta>
+            <time [attr.datetime]="task.date">{{ task.date | date:"EEEE hh:mm a" }}</time>
+          </div>
+        }
+      </mat-list-item>
+    </div>
   }
 </mat-nav-list>
 

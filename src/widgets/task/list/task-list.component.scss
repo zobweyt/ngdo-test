@@ -1,3 +1,11 @@
+.height-container {
+  display: flex;
+}
+
+.animation-height-container {
+  display: flex;
+}
+
 :host {
   flex: 1;
   position: relative;
@@ -14,12 +22,15 @@
 
 @media (min-width: 959px) {
   .mat-mdc-nav-list {
-    padding-inline: 8px;
+    margin-inline: 16px;
   }
 }
 
 .mat-mdc-list-item {
   --mat-list-active-indicator-shape: var(--mat-sys-corner-medium);
+  --mdc-list-list-item-container-color: var(--mat-sys-background);
+
+  position: relative;
 }
 
 .mat-mdc-checkbox.mat-mdc-list-item-avatar {
