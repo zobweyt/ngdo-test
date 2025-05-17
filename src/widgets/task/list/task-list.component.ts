@@ -1,3 +1,4 @@
+import { SettingsService } from "@/entities/settings";
 import { Task, TaskService } from "@/entities/task";
 import { NgdTaskSelectService } from "@/features/task/select";
 import { NgdTaskToggleScheduler } from "@/features/task/toggle";
@@ -27,6 +28,7 @@ export class NgdTaskList implements AfterViewInit {
   @Input({ required: true })
   public tasks!: Task[];
 
+  settings = inject(SettingsService);
   taskService = inject(TaskService);
   taskSelectService = inject(NgdTaskSelectService);
   taskToggleScheduler = inject(NgdTaskToggleScheduler);

@@ -1,4 +1,8 @@
-<mat-nav-list aria-label="Select a task" style="margin-inline: 8px;">
+<mat-nav-list
+  aria-label="Select a task"
+  style="margin-inline: 8px;"
+  [style.--delay-after-check-mark]="`${settings.delayAfterCheckMark}ms`"
+>
   @for (task of tasks; track task.id) {
     <mat-list-item    
       role="listitem"
