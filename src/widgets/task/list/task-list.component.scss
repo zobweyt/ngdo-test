@@ -24,7 +24,7 @@
 
   transition-property: color, background-size;
   transition-duration: var(--strike-duration);
-  transition-timing-function: ease;
+  transition-timing-function: cubic-bezier(0.34, 0.80, 0.34, 1.00);
 }
 
 .mat-mdc-list-item:has(.mat-mdc-checkbox-checked) .mat-mdc-list-item-title {
