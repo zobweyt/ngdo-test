@@ -1,6 +1,8 @@
 <ngd-toolbar>
   @if (tasks().length) {
     <button
+      @fade
+      [@.disabled]="!viewInitialized"
       mat-icon-button
       type="button"
       aria-label="More options"
@@ -24,10 +26,8 @@
   }
 </ngd-toolbar>
 
-@if (tasks().length) {
-  <ngd-task-list [tasks]="tasks()" />
-} @else {
-  <ngd-placeholder>
+<ngd-task-list [tasks]="tasks()">
+  <ngd-placeholder ngdTaskListPlaceholder>
     <mat-icon ngdPlaceholderIcon>check_box_outline_blank</mat-icon>
     <p ngdPlaceholderTitle>
       No completed tasks yet
@@ -35,9 +35,5 @@
     <p ngdPlaceholderDescription>
       There are no completed tasks
     </p>
-    <a routerLink="" mat-button mat-flat-button ngdPlaceholderAction>
-      <mat-icon>add</mat-icon>
-      Create new task
-    </a>
   </ngd-placeholder>
-}
+</ngd-task-list>

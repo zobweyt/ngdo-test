@@ -1,23 +1,21 @@
 <mat-nav-list
-  aria-label="Select a task"
-  style="margin-inline: 8px;"
+  [attr.aria-label]='tasks.length === 0 ? "No tasks" : "Select a task"'
   [style.--delay-after-check-mark]="`${settings.delayAfterCheckMark}ms`"
 >
-  @for (task of tasks; track task.id) {
-    <mat-list-item    
+  @for (task of tasks; track task.id) {  
+    <mat-list-item
       role="listitem"
       tabindex="0"
-      (click)="taskSelectService.selectTask(task.id)"
-      (keydown.enter)="taskSelectService.selectTask(task.id)"
-      (keydown.space)="taskSelectService.selectTask(task.id)"
-      [activated]="isWebLandscape() && taskSelectService.isSelectedTask(task)"
-      [@.disabled]="viewInitialized === false"
+      (click)="taskSelector.select(task.id)"
+      (keydown.enter)="taskSelector.select(task.id)"
+      [activated]="isWebLandscape() && taskSelector.isSelectedTaskId(task.id)"
       [@fadeHeight]
+      [@.disabled]="!viewInitialized"
     >
       <mat-checkbox
-        #checkbox
-        aria-label="Toggle task completed state"
         matListItemAvatar
+        #checkbox
+        [attr.aria-label]="checkbox.checked ? 'Mark task as active' : 'Mark task as completed'"
         (click)="$event.stopPropagation()"
         (change)="taskToggleScheduler.schedule(task.id)"
         [checked]="task.completed"
@@ -27,10 +25,16 @@
         <div matListItemLine [innerHTML]="task.description | markdown" class="ngd-markdown"></div>
       }
       @if (task.date) {
-        <div matListItemMeta style="font: var(--mat-sys-body-medium)">
+        <div matListItemMeta>
           <time [attr.datetime]="task.date">{{ task.date | date:"EEEE hh:mm a" }}</time>
         </div>
       }
     </mat-list-item>
   }
 </mat-nav-list>
+
+@if (!tasks.length) {
+  <div [@fade] [@.disabled]="!viewInitialized">
+    <ng-content select="[ngdTaskListPlaceholder]" />
+  </div>
+}

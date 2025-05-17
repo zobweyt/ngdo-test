@@ -5,10 +5,8 @@
   (create)="taskService.createTaskToday($event)"
 />
 
-@if (tasks().length) {
-  <ngd-task-list [tasks]="tasks()" />
-} @else {
-  <ngd-placeholder>
+<ngd-task-list [tasks]="tasks()">
+  <ngd-placeholder ngdTaskListPlaceholder>
     <mat-icon ngdPlaceholderIcon>wb_sunny</mat-icon>
     <p ngdPlaceholderTitle>
       All tasks completed
@@ -27,4 +25,4 @@
       Create new task
     </button>
   </ngd-placeholder>
-}
+</ngd-task-list>

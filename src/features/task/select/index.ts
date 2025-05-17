@@ -16,11 +16,11 @@ export class NgdTaskSelectService {
     });
   }
 
-  public isSelectedTask(task: Task): boolean {
-    return this.selectedTask()?.id === task.id;
+  public isSelectedTaskId(id: string | null): boolean {
+    return this.selectedTask()?.id === id;
   }
 
-  public selectTask(id: string | null): void {
+  public select(id: string | null): void {
     const task = this.service.getTaskById(id);
 
     if (!task) {

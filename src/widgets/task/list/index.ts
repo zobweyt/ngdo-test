@@ -1,1 +1,1 @@
-export { NgdTaskList } from "./task-list.component";
+export { NgdTaskListModule } from "./module";

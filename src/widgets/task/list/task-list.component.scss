@@ -1,3 +1,17 @@
+:host {
+  flex: 1;
+  position: relative;
+}
+
+.ngd-task-list__placeholder {
+  position: absolute;
+  inset: 0;
+}
+
+.mat-mdc-nav-list {
+  margin-inline: 8px;
+}
+
 @media (min-width: 959px) {
   .mat-mdc-nav-list {
     padding-inline: 8px;
@@ -48,9 +62,12 @@
   }
 }
 
-.mdc-list-item--with-leading-avatar.mdc-list-item--with-two-lines.mdc-list-item--with-trailing-meta
-  .mdc-list-item__end {
+.mdc-list-item--with-two-lines .mdc-list-item__end {
   margin-top: -4px;
+}
+
+.mdc-list-item__end {
+  font: var(--mat-sys-body-medium);
 }
 
 .mdc-list-item__primary-text::before,

@@ -5,26 +5,9 @@
   (create)="taskService.createTask($event)"
 />
 
-@if (tasks().length) {
-  <ngd-task-list [tasks]="tasks()" />
-} @else {
-  <ngd-placeholder>
-    <mat-icon ngdPlaceholderIcon>done_all</mat-icon>
-    <p ngdPlaceholderTitle>
-      You are all done
-    </p>
-    <p ngdPlaceholderDescription>
-      There are no more active tasks
-    </p>
-    <button
-      type="button"
-      mat-button
-      mat-flat-button
-      ngdPlaceholderAction
-      (click)="form.input.focus()"
-    >
-      <mat-icon>add</mat-icon>
-      Create new task
-    </button>
-  </ngd-placeholder>
-}
+<ngd-task-list [tasks]="tasks()">
+  <ngd-home-page-task-list-placeholder
+    ngdTaskListPlaceholder
+    (action)="form.input.focus()"
+  />
+</ngd-task-list>

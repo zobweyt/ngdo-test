@@ -1,0 +1,21 @@
+<ngd-placeholder>
+  <mat-icon ngdPlaceholderIcon aria-label="Done all icon">
+    done_all
+  </mat-icon>
+  <p ngdPlaceholderTitle>
+    You are all done
+  </p>
+  <p ngdPlaceholderDescription>
+    There are no more active tasks
+  </p>
+  <button
+    type="button"
+    mat-button
+    mat-flat-button
+    ngdPlaceholderAction
+    (click)="action.emit()"
+  >
+    <mat-icon>add</mat-icon>
+    Create new task
+  </button>
+</ngd-placeholder>

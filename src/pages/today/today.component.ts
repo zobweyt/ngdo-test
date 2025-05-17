@@ -1,7 +1,7 @@
 import { TaskService } from "@/entities/task";
 import { NgdTaskCreateForm } from "@/features/task/create";
 import { NgdPlaceholderModule } from "@/shared/ui/placeholder";
-import { NgdTaskList } from "@/widgets/task/list";
+import { NgdTaskListModule } from "@/widgets/task/list";
 import { NgdToolbar } from "@/widgets/toolbar/component";
 import { Component, computed, inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
@@ -14,8 +14,8 @@ import { MatIconModule } from "@angular/material/icon";
     MatIconModule,
     NgdPlaceholderModule,
     NgdTaskCreateForm,
+    NgdTaskListModule,
     NgdToolbar,
-    NgdTaskList,
   ],
   templateUrl: "./today.component.html",
   styleUrl: "./today.component.scss",
